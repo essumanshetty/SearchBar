@@ -9,7 +9,7 @@ search.addEventListener("focus", function (e) {
 });
 
 search.addEventListener("focusout", function (e) {
-  // resultContainer.style.display = "none";
+  resultContainer.style.display = "none";
   // noMatch.style.display = "none";
 });
 
@@ -21,25 +21,48 @@ search.addEventListener("input", function (event) {
     // val = JSON.stringify(val);
     // console.log(title);
     if (
-      title.includes(event.target.value) &&
       event.target.value != " " &&
-      event.target.value != ""
+      event.target.value != "" &&
+      title.includes(event.target.value)
     ) {
       // console.log(val);
       let resultDiv = document.createElement("div");
       resultDiv.classList.add("result");
-      // resultDiv.id = title;
-      // resultDiv.textContent = JSON.parse(val).title;
       resultDiv.textContent = title;
       resultContainer.append(resultDiv);
-    } else {
-      noMatch.style.display = "block";
     }
   });
-  temp();
+  
+  showNoMatch();
+  removeBlueClass();
+  addBlueClass();
 });
 
-function temp() {
+function showNoMatch() {
+  let results = document.querySelectorAll(".result");
+  // console.log(results.length);
+  if (results.length < 1) {
+    let noMatchdIV = document.createElement("div");
+    noMatchdIV.classList.add("result");
+    noMatchdIV.id = "noMatch";
+    noMatchdIV.textContent = "No Match Found!!!";
+    resultContainer.append(noMatchdIV);
+    noMatch.style.display = "block";
+  } else {
+    noMatch.style.display = "none";
+  }
+}
+
+function removeBlueClass() {
+  let results = document.querySelectorAll(".card");
+  for (let j = 0; j < results.length; j++) {
+    if (results[j].classList.contains("blue")) {
+      results[j].classList.remove("blue");
+    }
+  }
+}
+
+function addBlueClass() {
   let results = document.querySelectorAll(".result");
 
   for (let i = 0; i < results.length; i++) {

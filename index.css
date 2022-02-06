@@ -93,21 +93,21 @@ main .card {
 
 .resultContainer {
   position: absolute;
-  background-color: rgba(95, 86, 86, 1);
+  background-color:#e6f5ea;
   width: 1100px;
   top: 70px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   display: none;
 }
 .resultContainer .result {
-  background-color: rgb(131, 161, 201);
+  background-color: rgb(53, 54, 56);
   color: #fff;
   padding: 10px;
   margin: 1rem;
 }
-#noMatch {
-  display: none;
+.result:hover {
+  cursor: pointer;
 }
+
 .blue {
   background-color: #393ce6 !important;
   color: #fff;
